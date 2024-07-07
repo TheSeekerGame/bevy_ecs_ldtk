@@ -8,7 +8,7 @@ use crate::{
 
 use crate::{components::TileGridBundle, ldtk::*};
 use bevy::prelude::*;
-use bevy_ecs_tilemap::{
+use seek_ecs_tilemap::{
     map::{TilemapId, TilemapSize},
     tiles::{TilePos, TileStorage},
 };

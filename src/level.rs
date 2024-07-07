@@ -16,19 +16,15 @@ use crate::{
 };
 
 use bevy::prelude::*;
-use bevy_ecs_tilemap::{
+use seek_ecs_tilemap::{
     map::{
-        TilemapGridSize, TilemapId, TilemapSize, TilemapSpacing, TilemapTexture, TilemapTileSize,
+        TilemapGridSize, TilemapId, TilemapSize, TilemapSpacing, TilesetTexture, TilemapTileSize,
     },
     tiles::{TilePos, TileStorage},
 };
 use std::collections::{HashMap, HashSet};
 
-#[cfg(feature = "render")]
-use bevy_ecs_tilemap::TilemapBundle;
-
-#[cfg(not(feature = "render"))]
-use bevy_ecs_tilemap::StandardTilemapBundle as TilemapBundle;
+use seek_ecs_tilemap::TilemapBundle;
 
 use thiserror::Error;
 
@@ -154,8 +150,9 @@ fn insert_spatial_bundle_for_layer_tiles(
             if let Some(tile_entity) = tile_entity {
                 let spatial_bundle = spatial_bundle_for_tiles(tile_pos.into(), grid_size);
 
-                commands.entity(tile_entity).insert(spatial_bundle);
-                commands.entity(tilemap_id.0).add_child(tile_entity);
+                // commands.entity(tile_entity).insert(spatial_bundle);
+                commands.entity(tile_entity).insert(LdtkParent(tilemap_id.0));
+                // commands.entity(tilemap_id.0).add_child(tile_entity);
             }
         }
     }
@@ -417,10 +414,10 @@ pub fn spawn_level(
                 };
 
                 let texture = match (tileset_definition, int_grid_image_handle) {
-                    (Some(tileset_definition), _) => TilemapTexture::Single(
+                    (Some(tileset_definition), _) => TilesetTexture::Single(
                         tileset_map.get(&tileset_definition.uid).unwrap().clone(),
                     ),
-                    (None, Some(handle)) => TilemapTexture::Single(handle.clone()),
+                    (None, Some(handle)) => TilesetTexture::Single(handle.clone()),
                     _ => {
                         warn!("unable to render tilemap layer, it has no tileset and no intgrid layers were expected");
                         continue;
