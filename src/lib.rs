@@ -61,7 +61,7 @@ pub mod prelude {
         assets::{LdtkProject, LevelIndices, LevelMetadataAccessor},
         components::{
             EntityIid, EntityInstance, GridCoords, IntGridCell, LayerMetadata, LdtkWorldBundle,
-            LevelIid, LevelSet, Respawn, TileEnumTags, TileMetadata, Worldly,
+            LevelIid, LevelSet, Respawn, TileEnumTags, TileMetadata, Worldly, LdtkParent,
         },
         ldtk::{
             self, ldtk_fields::LdtkFields, raw_level_accessor::RawLevelAccessor, FieldValue,
