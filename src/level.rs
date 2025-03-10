@@ -16,19 +16,19 @@ use crate::{
 };
 
 use bevy::prelude::*;
-use bevy_ecs_tilemap::{
+use seek_ecs_tilemap::{
     map::{
-        TilemapGridSize, TilemapId, TilemapSize, TilemapSpacing, TilemapTexture, TilemapTileSize,
+        TilemapGridSize, TilemapId, TilemapSize, TilemapSpacing, TilesetTexture as TilemapTexture, TilemapTileSize,
     },
     tiles::{TilePos, TileStorage},
 };
 use std::collections::{HashMap, HashSet};
 
 #[cfg(feature = "render")]
-use bevy_ecs_tilemap::TilemapBundle;
+use seek_ecs_tilemap::TilemapBundle;
 
 #[cfg(not(feature = "render"))]
-use bevy_ecs_tilemap::StandardTilemapBundle as TilemapBundle;
+use seek_ecs_tilemap::StandardTilemapBundle as TilemapBundle;
 
 use thiserror::Error;
 

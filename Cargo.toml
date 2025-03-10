@@ -14,8 +14,8 @@ exclude = ["assets/*", "repo/*", "scripts/*"]
 members = ["macros"]
 
 [dependencies]
+seek_ecs_tilemap = { git = "https://github.com/TheSeekerGame/seek_ecs_tilemap", branch = "bevy015" }
 bevy_ecs_ldtk_macros = { version = "0.11.0", optional = true, path = "macros" }
-bevy_ecs_tilemap = { version = "0.15.0", default-features = false }
 bevy = { version = "0.15", default-features = false, features = [
     "bevy_sprite",
 ] }
@@ -38,8 +38,7 @@ bevy-inspector-egui = "0.28"
 [features]
 default = ["derive", "render", "internal_levels"]
 derive = ["bevy_ecs_ldtk_macros"]
-atlas = ["bevy_ecs_tilemap/atlas"]
-render = ["bevy_ecs_tilemap/render"]
+render = ["seek_ecs_tilemap/render"]
 internal_levels = []
 external_levels = []
 

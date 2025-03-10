@@ -14,7 +14,7 @@ use crate::{
     utils::*,
 };
 use bevy::prelude::*;
-use bevy_ecs_tilemap::tiles::{
+use seek_ecs_tilemap::tiles::{
     TileBundle, TileColor, TileFlip, TilePos, TileTextureIndex, TileVisible,
 };
 
